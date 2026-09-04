@@ -7,4 +7,8 @@ with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         d = os.path.join(here, "assets", sub)
         for f in sorted(os.listdir(d)):
             z.write(os.path.join(d, f), os.path.join("fishing_fever_presskit", sub, f))
+    demo = os.path.join(here, "assets", "demo")
+    for f in sorted(os.listdir(demo)):
+        if not f.endswith(".mp4"):
+            z.write(os.path.join(demo, f), os.path.join("fishing_fever_presskit", "demo", f))
 print("wrote", out, round(os.path.getsize(out) / 1e6, 1), "MB")
